@@ -31,6 +31,30 @@ public class LoginFrame extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e){
         String username = usernameField.getText();
         String password = new String(passwordField.getPassword());
+
+//        Add authentication logic here and replace the following line with it.
+//        if(username.equals("admin") && password.equals("admin")){
+//            JOptionPane.showMessageDialog(this, "Login Successful!");
+//            new MainFrame();
+//            this.dispose();
+//        }
+//        else{
+//            JOptionPane.showMessageDialog(this, "Invalid username or password!");
+//        }
+        if(authenticate(username, password)){
+            MainFrame mainFrame = new MainFrame();
+            mainFrame.setVisible(true);
+
+//            Close the login frame
+            this.dispose();
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Invalid username or password!");
+        }
+
+        }
+    private boolean authenticate(String username, String password){
+        return username.equals("admin") && password.equals("admin");
     }
 
 }
